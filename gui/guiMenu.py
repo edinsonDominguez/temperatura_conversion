@@ -1,4 +1,5 @@
-from tkinter import Frame, Label, Entry, ttk
+from msilib.schema import ComboBox
+from tkinter import Frame, Label, Entry, ttk, Button
 
 
 class Menu(Frame):
@@ -10,6 +11,11 @@ class Menu(Frame):
         self.config(bg='red')
         self.crearFrame()
 
+    def convertir(self):
+        print(self.combo.get())
+        mensaje = self.combo.get()
+        return mensaje
+
     def crearFrame(self):
         
         lblValor = Label(self, text='Ingresa el valor')
@@ -18,10 +24,15 @@ class Menu(Frame):
         txtValor = Entry(self)
         txtValor.place(x=10, y=30, width=100, height=20)
 
-        combo = ttk.Combobox(
+        self.combo = ttk.Combobox(
             self,
             state="readonly",
-            values=['perro', 'gallina', 'pato']
+            values=['seleccionar','CELSIUS', 'FARENHEIT', 'KELVIN']
         )
-        
-        combo.place(x=10, y=60)
+
+        self.combo.current(0)
+        self.combo.place(x=10, y=60, width=180, height=20)
+
+        btnConvertir = Button(self, command= self.convertir, text="Convertir")
+        btnConvertir.place(x=10, y=80, width=100, height=20)
+   
