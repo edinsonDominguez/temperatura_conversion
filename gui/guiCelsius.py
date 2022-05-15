@@ -15,3 +15,4 @@ class Celsius(Frame):
 
     def createFrame(self):
         lblSubTitle = Label(self, text='CELSIUS')
+        lblSubTitle.place(x=10, y=20, width=100, height=30)
