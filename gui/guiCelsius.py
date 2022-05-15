@@ -10,3 +10,8 @@ class Celsius(Frame):
         print(mensaje)
         print("valor = ", str(valor))
         self.config(bg='brown')
+
+        self.createFrame()
+
+    def createFrame(self):
+        lblSubTitle = Label(self, text='CELSIUS')

@@ -2,9 +2,18 @@ from gui.guiCelsius import Celsius
 from tkinter import Frame, Label, Entry, ttk, Button, Tk
 
 def convertir():
-    print("escogiste")
-    contenCelsius = Celsius(contenedor, combo.get(), valor=int(txtValor.get()))
-    contenCelsius.place(x=300, y=80, width=200, height=400) 
+
+    if(combo.get() == 'CELSIUS'):
+        pass
+
+    elif(combo.get() == 'FARENHEIT'):
+        contenCelsius = Celsius(contenedor, combo.get(), valor=int(txtValor.get()))
+        contenCelsius.place(x=300, y=80, width=200, height=400)
+    
+    elif(combo.get() == 'KELVIN'):
+        pass
+    else:
+        print("SELECCIONA LA TEMPERATURA")
 
 win = Tk()
 win.geometry('900x600')
