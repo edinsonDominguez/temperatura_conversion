@@ -1,5 +1,10 @@
-from tkinter import Tk, Button, Label, Entry, Frame
-from gui.guiMenu import Menu
+from gui.guiCelsius import Celsius
+from tkinter import Frame, Label, Entry, ttk, Button, Tk
+
+def convertir():
+    print("escogiste")
+    contenCelsius = Celsius(contenedor, combo.get(), valor=int(txtValor.get()))
+    contenCelsius.place(x=300, y=80, width=200, height=400) 
 
 win = Tk()
 win.geometry('900x600')
@@ -9,20 +14,33 @@ contenedor = Frame(win)
 contenedor.config(bg = 'blue')
 contenedor.place(x=0, y=0, width=900, height=600)
 
-
 lblTitulo = Label(contenedor, text='CONVERSIONES TERMICAS')
 lblTitulo.place(x=300, y=10, width=300, height=30)
 
-menuConversion = Menu(contenedor)
-menuConversion.place(x=0, y=50, width=200, height=400)
+#######################################
+menu = Frame(contenedor)
+menu.place(x=0, y=50, width=200, height=400)
+menu.config(bg='red')
 
+lblValor = Label(menu, text='Ingresa el valor')
+lblValor.place(x=10, y=10, width=180, height=20)
 
-btn = Button(win, text='selecion')
-btn.place(x=300, y=50, width=100, height=30)
+txtValor = Entry(menu)
+txtValor.place(x=10, y=30, width=100, height=20)
 
-contenCelsius = Frame(contenedor)
-contenCelsius.config(bg='brown')
-contenCelsius.place(x=300, y=80, width=200, height=400) 
+combo = ttk.Combobox(
+menu,
+state="readonly",
+values=['seleccionar','CELSIUS', 'FARENHEIT', 'KELVIN']
+)
+
+combo.current(0)
+combo.place(x=10, y=60, width=180, height=20)
+
+btnConvertir = Button(menu, command= convertir, text="Convertir")
+btnConvertir.place(x=10, y=80, width=100, height=20)
+
+##############################################
 
 contenFahren = Frame(contenedor)
 contenFahren.config(bg='gold')
