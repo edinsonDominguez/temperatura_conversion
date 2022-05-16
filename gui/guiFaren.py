@@ -10,13 +10,12 @@ class Faren(Frame):
         self.convertir = convertir
 
         print('class Faren')
-        self.config(bg='gold')
+        self.config(bg='#e46c0b')
         self.createFrame()
 
     def createFrame(self):
         
-        lblSubTitle = Label(self, text='FAHRENHEIT')
-        lblSubTitle.place(x=10, y=20, width=100, height=30)
+        
         lblResultado = Label(self, text = '')
         
 
@@ -29,4 +28,7 @@ class Faren(Frame):
             
             lblResultado.config(text=str(round(logica.kelvin_faren(self.valor), 1)))
             lblResultado.place(x=10,y=60, width=100, height=20)
+        
+        lblSubTitle = Label(self, text='FAHRENHEIT')
+        lblSubTitle.place(x=10, y=20, width=100, height=30)
         

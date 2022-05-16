@@ -11,7 +11,7 @@ class Celsius(Frame):
         self.convertir = convertir
 
         print('class Celsius')
-        self.config(bg='brown')
+        self.config(bg='#622524')
         self.createFrame()
 
     def createFrame(self):

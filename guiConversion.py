@@ -1,7 +1,8 @@
+import tkinter.font as tkFont
 from gui.guiFaren import Faren
 from gui.guiCelsius import Celsius
 from gui.guiKelvin import Kelvin
-from tkinter import Frame, Label, Entry, ttk, Button, Tk
+from tkinter import  N, W, Frame, Label, Entry, ttk, Button, Tk
 
 def convertir():
 
@@ -26,7 +27,6 @@ def convertir():
         contenFahren = Faren(contenedor, valor=int(txtValor.get()), convertir='KELVIN')
         contenFahren.place(x=550, y=80, width=200, height=400)
         
-
     else:
         print("SELECCIONA LA TEMPERATURA")
 
@@ -35,34 +35,41 @@ win.geometry('900x600')
 win.resizable(0,0)
 
 contenedor = Frame(win)
-contenedor.config(bg = 'blue')
+contenedor.config(bg = '#fff')
 contenedor.place(x=0, y=0, width=900, height=600)
 
-lblTitulo = Label(contenedor, text='CONVERSIONES TERMICAS')
-lblTitulo.place(x=300, y=10, width=300, height=30)
+fontTitle = tkFont.Font(family="calibri", size=24)
+fontText = tkFont.Font(family="calibri", size=16)
+
+lblTitulo = Label(contenedor, text='CONVERSIONES TERMICAS', bg='#9bbb58', fg='#274a50', font=fontTitle)
+lblTitulo.place(x=0, y=0, width=900, height=70)
 
 #######################################
 menu = Frame(contenedor)
-menu.place(x=0, y=50, width=200, height=400)
-menu.config(bg='red')
+menu.place(x=0, y=70, width=230, height=530)
+menu.config(bg='#13de2a')
 
-lblValor = Label(menu, text='Ingresa el valor')
-lblValor.place(x=10, y=10, width=180, height=20)
+lblValor = Label(menu, text='Ingresa el valor: ', font=fontText, fg='#274a50', bg='#13de2a', anchor = W)
+lblValor.place(x=10, y=10, width=180, height=25)
 
-txtValor = Entry(menu)
-txtValor.place(x=10, y=30, width=100, height=20)
+txtValor = Entry(menu, font=fontText)
+txtValor.place(x=10, y=40, width=180, height=27)
+
+lblValor = Label(menu, text='Elige la temperatura ', font=fontText, fg='#274a50', bg='#13de2a', anchor = W)
+lblValor.place(x=10, y=70, width=180, height=25)
 
 combo = ttk.Combobox(
 menu,
 state="readonly",
-values=['seleccionar','CELSIUS', 'FARENHEIT', 'KELVIN']
+values=['seleccionar','CELSIUS', 'FARENHEIT', 'KELVIN'],
+font=fontText
 )
 
 combo.current(0)
-combo.place(x=10, y=60, width=180, height=20)
+combo.place(x=10, y=100, width=180, height=30)
 
-btnConvertir = Button(menu, command= convertir, text="Convertir")
-btnConvertir.place(x=10, y=80, width=100, height=20)
+btnConvertir = Button(menu, command= convertir, text="Iniciar", bg='#fdc100', fg='#284b5e', font=fontTitle)
+btnConvertir.place(x=40, y=150, width=150, height=40)
 
 ##############################################
 
