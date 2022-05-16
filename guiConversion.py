@@ -1,17 +1,32 @@
+from gui.guiFaren import Faren
 from gui.guiCelsius import Celsius
+from gui.guiKelvin import Kelvin
 from tkinter import Frame, Label, Entry, ttk, Button, Tk
 
 def convertir():
 
-    if(combo.get() == 'CELSIUS'):
-        pass
+    if(combo.get() == 'CELSIUS'):  
+        contenFahren = Faren(contenedor, valor=int(txtValor.get()), convertir='CELSIUS')
+        contenFahren.place(x=300, y=80, width=200, height=400)
 
+        contenKelvin = Kelvin(contenedor, valor=int(txtValor.get()), convertir='CELSIUS')
+        contenKelvin.place(x=550, y=80, width=200, height=400)
+ 
     elif(combo.get() == 'FARENHEIT'):
-        contenCelsius = Celsius(contenedor, combo.get(), valor=int(txtValor.get()))
+        contenCelsius = Celsius(contenedor, valor=int(txtValor.get()), convertir='FARENHEIT')
         contenCelsius.place(x=300, y=80, width=200, height=400)
-    
+
+        contenKelvin = Kelvin(contenedor, valor=int(txtValor.get()), convertir='FARENHEIT')
+        contenKelvin.place(x=550, y=80, width=200, height=400)
+ 
     elif(combo.get() == 'KELVIN'):
-        pass
+        contenCelsius = Celsius(contenedor, valor=int(txtValor.get()), convertir='KELVIN')
+        contenCelsius.place(x=300, y=80, width=200, height=400)
+        
+        contenFahren = Faren(contenedor, valor=int(txtValor.get()), convertir='KELVIN')
+        contenFahren.place(x=550, y=80, width=200, height=400)
+        
+
     else:
         print("SELECCIONA LA TEMPERATURA")
 
@@ -50,13 +65,5 @@ btnConvertir = Button(menu, command= convertir, text="Convertir")
 btnConvertir.place(x=10, y=80, width=100, height=20)
 
 ##############################################
-
-contenFahren = Frame(contenedor)
-contenFahren.config(bg='gold')
-contenFahren.place(x=550, y=80, width=200, height=400) 
-
-contenKelvin = Frame(contenedor)
-contenKelvin.config(bg='orangered')
-contenKelvin.place(x=300, y=80, width=200, height=400) 
 
 win.mainloop()
