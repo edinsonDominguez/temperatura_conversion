@@ -1,6 +1,7 @@
-from socket import if_indextoname
 from tkinter import Canvas, Frame, Label
 from gui import logica
+import tkinter.font as tkFont
+
 
 class Celsius(Frame):
 
@@ -15,25 +16,27 @@ class Celsius(Frame):
 
     def createFrame(self):
         
+        
+        fontTitle = tkFont.Font(family="calibri", size=24)
+        fontNumber = tkFont.Font(family="arial bold", size=36)
        
-        circulo = Canvas(self, width=200, height=200, bg ='#622524')
-        circulo.create_oval(200, 5, 5, 200, fill ='#da9695', outline = '#fff')
-        circulo.place(x=0, y=0) 
+        circulo = Canvas(self, width=197, height=180, bg ='#622524')
+        circulo.create_oval(190, 5, 5, 175, fill ='#da9695', outline = '#fff')
+        circulo.place(x=0, y=70)
 
-        lblResultado = Label(self, text = '')
+        lblResultado = Label(self, text = '', bg='#da9695', font=fontNumber, fg='#3f48cc')
         
         if(self.convertir == 'FARENHEIT'):
-            print('if:farenheit')
             lblResultado.config(text=str(round(logica.temp_celsius_fahr(self.valor), 1)))
-            lblResultado.place(x=10,y=60, width=100, height=20)
- 
-        elif(self.convertir == 'KELVIN'):
-            print('if: Kelvin')
+            
+        elif(self.convertir == 'KELVIN'):           
             lblResultado.config(text=str(round(logica.temp_celsius_kelvin(self.valor), 1)))
-            lblResultado.place(x=10,y=60, width=100, height=20)
+        
 
-        lblSubTitle = Label(self, text='CELSIUS')
-        lblSubTitle.place(x=10, y=300, width=100, height=30)
+        lblResultado.place(x=20,y=140, width=150, height=50)
+
+        lblSubTitle = Label(self, text='CELSIUS', font=fontTitle, fg='#fff', bg ='#622524')
+        lblSubTitle.place(x=40, y=330, width=100, height=30)
 
 
         
